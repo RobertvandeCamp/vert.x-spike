@@ -19,7 +19,7 @@ public class WebServer extends Verticle {
 		    	req.response().sendFile("web/" + "index.html");  
 		    }
 		});
-		
+		 
 		routeMatcher.get("/animals", new Handler<HttpServerRequest>() {
 			public void handle(HttpServerRequest req) {
 				req.response().sendFile("web/" + "animals.html");  
