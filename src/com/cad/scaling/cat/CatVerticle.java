@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.vertx.java.core.Handler;
 import org.vertx.java.core.eventbus.EventBus;
 import org.vertx.java.core.eventbus.Message;
+import org.vertx.java.core.json.JsonObject;
 import org.vertx.java.core.logging.Logger;
 import org.vertx.java.platform.Verticle;
 
@@ -21,10 +22,11 @@ public class CatVerticle extends Verticle {
 	public void start() {
 		logger = container.logger();
 		logger.info(String.format("Catverticle [%s] online", id));
-		Handler<Message<String>> handler = new Handler<Message<String>>() {
+		Handler<Message<JsonObject>> handler = new Handler<Message<JsonObject>>() {
 			@Override
-			public void handle(Message<String> msg) {
-				logger.info(String.format("The cats in verticle [%s] have received [%s]", id.toString(), msg.body()));
+			public void handle(Message<JsonObject> msg) {
+				logger.info(String.format("The cats in verticle [%s] have received [%s]", id.toString(), msg.body()
+						.toString()));
 			}
 		};
 

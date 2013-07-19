@@ -1,7 +1,10 @@
 Server:
-- Try out communications between multiple verticles.
+V - Try out communications between multiple verticles.
+- Json communication
+- Use modules for deployment
 - Unit test verticle
+- Youtube movie on Vert.x
 
 Client:
-- Install and try out AngularJS
+- Install and try out AngularJS (watch video tutorial on website)
 - Install and try out Yeoman

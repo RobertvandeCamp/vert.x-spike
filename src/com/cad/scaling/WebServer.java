@@ -5,6 +5,7 @@ import org.vertx.java.core.eventbus.EventBus;
 import org.vertx.java.core.http.HttpServer;
 import org.vertx.java.core.http.HttpServerRequest;
 import org.vertx.java.core.http.RouteMatcher;
+import org.vertx.java.core.json.JsonObject;
 import org.vertx.java.core.logging.Logger;
 import org.vertx.java.platform.Verticle;
 
@@ -47,11 +48,12 @@ public class WebServer extends Verticle {
 			}
 		});
 
-		routeMatcher.get("/animals/cats", new Handler<HttpServerRequest>() {
+		routeMatcher.get("/animals/cats/:catname", new Handler<HttpServerRequest>() {
 			@Override
 			public void handle(HttpServerRequest req) {
 				logger.info(String.format(REQUEST_MSG, "cats"));
-				eb.send("eb.cats", "new message");
+				JsonObject jo = createCatJson(req.params().get("catname"));
+				eb.send("eb.cats", jo);
 				req.response().end("Where's the cats?");
 			}
 		});
@@ -65,6 +67,13 @@ public class WebServer extends Verticle {
 		});
 
 		server.requestHandler(routeMatcher).listen(8080, "localhost");
+	}
+
+	protected JsonObject createCatJson(String catName) {
+		JsonObject jo = new JsonObject();
+		jo.putNumber("time", System.currentTimeMillis());
+		jo.putString("message", catName);
+		return jo;
 	}
 
 }

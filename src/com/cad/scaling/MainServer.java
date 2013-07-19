@@ -12,7 +12,6 @@ public class MainServer extends Verticle {
 		logger = container.logger();
 		logger.info("Main server online");
 
-		container.deployVerticle("com.cad.scaling.WebServer");
 		container.deployVerticle("com.cad.scaling.cat.CatVerticle", 2);
 		container.deployVerticle("com.cad.scaling.dog.DogVerticle", 2);
 	}
