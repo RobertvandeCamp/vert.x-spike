@@ -1,0 +1,7 @@
+Server:
+- Try out communications between multiple verticles.
+- Unit test verticle
+
+Client:
+- Install and try out AngularJS
+- Install and try out Yeoman
