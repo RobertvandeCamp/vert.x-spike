@@ -2,15 +2,16 @@ package com.cad.scaling.dog;
 
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.vertx.java.core.Handler;
 import org.vertx.java.core.eventbus.EventBus;
 import org.vertx.java.core.eventbus.Message;
-import org.vertx.java.core.logging.Logger;
 import org.vertx.java.platform.Verticle;
 
 public class DogVerticle extends Verticle {
 
-	private Logger logger;
+	private static final Logger LOG = LoggerFactory.getLogger(DogVerticle.class);
 	private final UUID id;
 
 	public DogVerticle() {
@@ -19,12 +20,11 @@ public class DogVerticle extends Verticle {
 
 	@Override
 	public void start() {
-		logger = container.logger();
-		logger.info(String.format("Dogverticle [%s] online", id));
+		LOG.info(String.format("Dogverticle [%s] online", id));
 		Handler<Message<String>> handler = new Handler<Message<String>>() {
 			@Override
 			public void handle(Message<String> msg) {
-				logger.info(String.format("The dogs in verticle [%s] have received [%s]", id.toString(), msg.body()));
+				LOG.info(String.format("The dogs in verticle [%s] have received [%s]", id.toString(), msg.body()));
 			}
 		};
 

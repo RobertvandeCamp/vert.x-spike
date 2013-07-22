@@ -1,18 +1,22 @@
 package com.cad.scaling;
 
-import org.vertx.java.core.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.vertx.java.platform.Verticle;
+
+import com.cad.scaling.cat.CatVerticle;
+import com.cad.scaling.dog.DogVerticle;
 
 public class MainServer extends Verticle {
 
-	private Logger logger;
+	private static final Logger LOG = LoggerFactory.getLogger(MainServer.class);
 
 	@Override
 	public void start() {
-		logger = container.logger();
-		logger.info("Main server online");
+		LOG.info("Main server online");
 
-		container.deployVerticle("com.cad.scaling.cat.CatVerticle", 2);
-		container.deployVerticle("com.cad.scaling.dog.DogVerticle", 2);
+		getContainer().deployVerticle(CatVerticle.class.getName(), 2);
+		getContainer().deployVerticle(DogVerticle.class.getName(), 2);
 	}
+
 }

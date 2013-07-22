@@ -1,8 +1,8 @@
 Server:
 V - Try out communications between multiple verticles.
-- Json communication
-- Use modules for deployment
-- Unit test verticle
+V - Json communication
+V - Use modules for deployment
+V - Unit test verticle
 - Youtube movie on Vert.x
 
 Client:
