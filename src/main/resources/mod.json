@@ -1,0 +1,16 @@
+{
+
+  // Java verticle
+  "main":"com.cad.scaling.MainServer",
+
+  // If your module is going to be registered in the Vert.x module registry you will also need the following
+  // mandatory fields
+  "description":"First look at Vert.x",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Robert van de Camp",
+
+  // Optional fields
+  "developers": ["Robert van de Camp"],
+  "keywords": ["vert.x", "scaling"],
+  "homepage": "url to your project page"
+}
